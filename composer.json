@@ -1,0 +1,19 @@
+{
+  "name":"sample php",
+  "description":"php sample",
+  "type":"sample",
+  "keywords":[
+    "php","sample"
+  ],
+  "require":{
+    "php":">=7.0.0",
+    "imagine/imagine":"0.7.1",
+    "catfan/Medoo":"~1.5.3"
+  },
+  "repositories": {
+    "packagist": {
+      "type": "composer",
+      "url": "https://packagist.phpcomposer.com"
+    }
+  }
+}
