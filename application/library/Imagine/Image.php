@@ -9,7 +9,7 @@ class Imagine_Image
      * @return mixed
      */
     protected function sizeChange($size){
-        $sizeArr = [100,200,300,400,500,600,700];
+        $sizeArr = [100,200,300,400,500,600,700,800,900,1000];
         if(in_array($size,$sizeArr)){
             return $size;
         }else if($size < reset($sizeArr)){
@@ -68,12 +68,11 @@ class Imagine_Image
             if ($saveSize) {
                 $sizeType = new \Imagine\Image\Box($saveSize, $saveSize);
                 $mode = Imagine\Image\ImageInterface::THUMBNAIL_INSET;
-                $imagine->open($file)->thumbnail($sizeType, $mode)->save($saveFile);
+                $imagine->open($file)->thumbnail($sizeType,$mode)->save($saveFile);
             } else {
-                $imagine->open($file)->save($saveFile);
+                $imagine->open($file)->save($saveFile,['quality' => 100]);
             }
         }
-        $resUrl = str_replace(APP_PUBLIC, '', $saveFile);
-        return ['status' => 1, 'message' => '图片ok', 'data' => $resUrl];
+        return ['status' => 1, 'message' => '图片ok', 'data' => ['url'=>$saveFile,'ext'=>$saveExt]];
     }
 }

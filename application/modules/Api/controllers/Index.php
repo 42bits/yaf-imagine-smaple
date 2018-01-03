@@ -26,7 +26,9 @@ class IndexController extends Controller_Abstract
             echo json_encode(['status' => 0, 'message' => '没有图片']);
         } else {
             $res = $this->imagine->createInset($ret['url'], $size, $ext);
-            echo json_encode($res);
+            $imagine = new \Imagine\Imagick\Imagine();
+            $imagine->open($res['data']['url'])
+                ->show(ltrim($res['data']['ext'],'.'));
         }
     }
 }
